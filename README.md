@@ -1,2 +1,1 @@
-# mypip-pw
-My Public IP
+a waste of time but also something kinda fun

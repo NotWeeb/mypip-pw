@@ -1,0 +1,17 @@
+{
+  "name": "mypip-pw",
+  "version": "1.0.0",
+  "description": "a waste of time but also something kinda fun",
+  "main": "app.js",
+  "dependencies": {
+    "cloudflare-express": "^1.0.1",
+    "express": "^4.16.4",
+    "express-force-ssl": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@NotWeeb",
+  "license": "ISC"
+}

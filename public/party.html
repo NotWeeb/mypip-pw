@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Public IP</title>
+  
+
+  <meta name="theme-color" content="#7548ab" />
+
+  <link rel="icon" type="image/png" href="icon.png" />
+
+  <meta charset="utf-8" />
+  <meta name="mobile-web-app-capable" content="no" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="twitter:url"          content="https://mypip.pw/" />
+  <meta property="og:url"           content="https://mypip.pw/" />
+  <meta property="og:see_also"      content="https://mypip.pw/" />
+
+  <meta property="og:site_name"     content="www.mypip.pw" />
+
+  <meta itemprop="name"             content="My Public IP" />
+  <meta name="twitter:title"        content="My Public IP" />
+  <meta property="og:title"         content="My Public IP" />
+
+  <meta itemprop="image"            content="https://mypip.pw/icon.png" />
+  <meta name="twitter:image"        content="https://mypip.pw/icon.png" />
+  <meta property="og:image"         content="https://mypip.pw/icon.png" />
+
+  <meta name="twitter:description"  content="Get your public IP address in the coolest way!" />
+  <meta property="og:description"   content="Get your public IP address in the coolest way!" />
+  <meta name="description"          content="Get your public IP address in the coolest way!" />
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="P2dP.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenLite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css?family=K2D|Montserrat|Bai+Jamjuree" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <h1 class="noselect">My Public IP</h1><h4 onclick="window.location.href = '?nice_meme'">MyPIP.pw</h4>
+  <div class="info-container">
+    <div class="info-box">
+      <div class="top" title="Double click here to get the stuff without the party :(">
+        <h3 class="noselect">Here is your Public IP</h3>
+        <button class="copyIP" copyable="true" title="Click for a party!">COPY</button>
+      </div>
+      <div class="ipDisplay" copyable="true">%_USER_IP_%</div>
+    </div>
+  </div>
+  
+  <p class="important-info">
+    <code>v1.06</code>
+    <br>
+    Your public Internet Protocol (IP) address is <b>NOT</b> recorded or saved
+    <br>
+    Copyright © - 2018 (<a target="_blank" href="https://github.com/NotWeeb">@NotWeeb</a>)
+    <br>
+    <code><a href="?the_music_has_been_disabled_as_requested_sir">Disable Music</a></code> | <code><a target="_blank" href="https://github.com/NotWeeb/mypip-pw">Source</a></code>
+  </p>
+  
+  <audio id="audio"><source src="bensound-theelevatorbossanova.mp3" type="audio/mpeg"></audio>
+
+  
+  <script src="confetti.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
