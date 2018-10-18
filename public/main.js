@@ -21,6 +21,60 @@ jQuery.fn.selectText = function(){
 };
 
 $('*').click(function(e) {
+	
+	
+
+	function disableMusic(el) {
+		const cookie = $.cookie('disabled-music');
+		if (cookie) {
+			$.removeCookie('disabled-music');
+		} else {
+			$.cookie('disabled-music', 1);
+		}
+		setDisableText();
+	};
+
+
+	const makeExplode = () => {
+		confetti.addConfettiParticles(40, -45, 10000, 0, window.outerHeight-120); // bottom left
+		confetti.addConfettiParticles(40, -130, 10000, window.outerWidth, window.outerHeight-120); // bottom right
+		confetti.addConfettiParticles(40, 45, 10000, -40, -120); // top left
+		confetti.addConfettiParticles(40, 130, 10000, window.outerWidth+40, -120); // top right
+	}
+	
+	const intervals = []
+
+	if (!$('.this-is-not-an-easter-egg').is(e.target) && $('.this-is-not-an-easter-egg').has(e.target).length === 0) {
+		
+		$('.doTheShake').addClass('shake-hard');
+		$('.doTheShake').addClass('shake-constant');
+		
+		if (!$.cookie('disabled-music')) {
+			$('#yeetAudio').trigger('play');
+			$('#yeetAudio')[0].currentTime = 1;
+		}
+
+		makeExplode();
+
+		intervals[0] = setInterval(makeExplode, 1700);
+
+		let is = true;
+		intervals[1] = setInterval(() => {
+			$('#canvas').css('filter', is ? 'invert(100%)' : 'unset');
+			is = !is;
+		}, 100);
+		
+	} else {
+		
+		clearInterval(intervals[0]);
+		clearInterval(intervals[1]);
+		
+		$('.doTheShake').removeClass('shake-hard');
+		$('.doTheShake').removeClass('shake-constant');
+		$('#yeetAudio').trigger('pause');
+		
+	}
+	
 	var container = $('.ipDisplay, .copyIP');
 	if (!container.is(e.target) && container.has(e.target).length === 0) {
 
@@ -94,39 +148,4 @@ function setDisableText () {
 
 $(document).ready(function() {
 	setDisableText();
-});
-
-function disableMusic(el) {
-	const cookie = $.cookie('disabled-music');
-	if (cookie) {
-		$.removeCookie('disabled-music');
-	} else {
-		$.cookie('disabled-music', 1);
-	}
-	setDisableText();
-};
-
-
-const makeExplode = () => {
-	confetti.addConfettiParticles(40, -45, 10000, 0, window.outerHeight-120); // bottom left
-	confetti.addConfettiParticles(40, -130, 10000, window.outerWidth, window.outerHeight-120); // bottom right
-	confetti.addConfettiParticles(40, 45, 10000, -40, -120); // top left
-	confetti.addConfettiParticles(40, 130, 10000, window.outerWidth+40, -120); // top right
-}
-
-$('.this-is-not-an-easter-egg').click(function() {
-	$('.doTheShake').addClass('shake-hard');
-	$('.doTheShake').addClass('shake-constant');
-	$('#yeetAudio').trigger('play');
-
-	makeExplode();
-
-	setInterval(makeExplode, 1700);
-
-	let is = true;
-	setInterval(() => {
-		$('#canvas').css('filter', is ? 'invert(100%)' : 'unset');
-		is = !is;
-	}, 100);
-
 });
