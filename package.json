@@ -1,6 +1,6 @@
 {
   "name": "mypip-pw",
-  "version": "1.14",
+  "version": "1.15",
   "description": "a waste of time but also something kinda fun",
   "main": "app.js",
   "dependencies": {

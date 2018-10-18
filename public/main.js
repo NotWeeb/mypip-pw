@@ -1,3 +1,6 @@
+
+let interval1, interval2
+
 jQuery.fn.selectText = function(){
 	this.find('input').each(function() {
 		if($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) { 
@@ -19,23 +22,21 @@ jQuery.fn.selectText = function(){
 		selection.addRange(range);
 	};
 };
-	
-const intervals = [];
+
+function disableMusic(el) {
+	const cookie = $.cookie('disabled-music');
+	if (cookie) {
+		$.removeCookie('disabled-music');
+	} else {
+		$.cookie('disabled-music', 1);
+	}
+	setDisableText();
+};
 
 $('*').click(function(e) {
-	
-	
 
-	function disableMusic(el) {
-		const cookie = $.cookie('disabled-music');
-		if (cookie) {
-			$.removeCookie('disabled-music');
-		} else {
-			$.cookie('disabled-music', 1);
-		}
-		setDisableText();
-	};
-
+		clearInterval(interval1);
+		clearInterval(interval2);
 
 	const makeExplode = () => {
 		confetti.addConfettiParticles(40, -45, 10000, 0, window.outerHeight-120); // bottom left
@@ -46,29 +47,30 @@ $('*').click(function(e) {
 
 	if (!$('.this-is-not-an-easter-egg').is(e.target) && $('.this-is-not-an-easter-egg').has(e.target).length === 0) {
 		
-		clearInterval(intervals[0]);
-		clearInterval(intervals[1]);
+		
+		console.log(interval1, interval2)
 		
 		$('.doTheShake').removeClass('shake-hard');
 		$('.doTheShake').removeClass('shake-constant');
 		$('#yeetAudio').trigger('pause');
 		
 	} else {
+		console.log('yeet')
 		
 		$('.doTheShake').addClass('shake-hard');
 		$('.doTheShake').addClass('shake-constant');
 		
 		if (!$.cookie('disabled-music')) {
 			$('#yeetAudio').trigger('play');
-			$('#yeetAudio')[0].currentTime = 1;
+			$('#yeetAudio')[0].currentTime = 0;
 		}
 
 		makeExplode();
 
-		intervals[0] = setInterval(makeExplode, 1700);
+		interval1 = setInterval(makeExplode, 1700);
 
 		let is = true;
-		intervals[1] = setInterval(() => {
+		interval2 = setInterval(() => {
 			$('#canvas').css('filter', is ? 'invert(100%)' : 'unset');
 			is = !is;
 		}, 100);
