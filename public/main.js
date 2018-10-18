@@ -19,6 +19,8 @@ jQuery.fn.selectText = function(){
 		selection.addRange(range);
 	};
 };
+	
+const intervals = [];
 
 $('*').click(function(e) {
 	
@@ -41,8 +43,6 @@ $('*').click(function(e) {
 		confetti.addConfettiParticles(40, 45, 10000, -40, -120); // top left
 		confetti.addConfettiParticles(40, 130, 10000, window.outerWidth+40, -120); // top right
 	}
-	
-	const intervals = []
 
 	if (!$('.this-is-not-an-easter-egg').is(e.target) && $('.this-is-not-an-easter-egg').has(e.target).length === 0) {
 		
