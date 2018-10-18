@@ -38,7 +38,7 @@ $('*').click(function(e) {
 		document.execCommand("copy");
 
 		$('.copyIP').addClass('copied');
-		$('.copyIP').text('COPIED!');
+		$('.copyIP').text('COPIED');
 
 		$('.info-box').addClass('infoButSpam');
 
@@ -49,11 +49,11 @@ $('*').click(function(e) {
 			$('#audio').prop("volume", 0.1);
 			$('#audio')[0].currentTime = 1;
 		};
-
-		confetti.addConfettiParticles(40, -45, 5000, $(window).width()/2-100, $(window).height()/2+100);
-		confetti.addConfettiParticles(40, -130, 5000, $(window).width()/2+100, $(window).height()/2+100);
-		confetti.addConfettiParticles(40, 45, 5000, $(window).width()/2-100, $(window).height()/2-100);
-		confetti.addConfettiParticles(40, 130, 5000, $(window).width()/2+100, $(window).height()/2-100);
+		
+		confetti.addConfettiParticles(20, -45, 10000, 0, window.outerHeight-120); // bottom left
+		confetti.addConfettiParticles(20, -130, 10000, window.outerWidth, window.outerHeight-120); // bottom right
+		confetti.addConfettiParticles(20, 45, 10000, -40, -120); // top left
+		confetti.addConfettiParticles(20, 130, 10000, window.outerWidth+40, -120); // top right
 
 	};
 });

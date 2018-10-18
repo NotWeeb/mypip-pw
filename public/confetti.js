@@ -13,9 +13,9 @@ function getDegAngle(x0, y0, x1, y1) {
 };
 
 // some constants
-const DECAY = 4;        // confetti decay in seconds
-const SPREAD = 60;      // degrees to spread from the angle of the cannon
-const GRAVITY = 1200;
+const DECAY = 6;        // confetti decay in seconds
+const SPREAD = 90;      // degrees to spread from the angle of the cannon
+const GRAVITY = 600;
 
 class ConfettiCannon {
     constructor() {
