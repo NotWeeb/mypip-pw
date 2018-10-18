@@ -25,6 +25,7 @@ app.use(forceSSL);
 
 // gather all requests and send it directly to the memes
 app.get('*', (req, res) => {
+	console.log('there was a request!!!!');
   const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   fs.readFile(path.resolve(__dirname, 'public', 'party.html'), 'utf8', (err, data) => {
     
@@ -51,5 +52,6 @@ const httpsServer = https.createServer({key, cert}, app);
 httpServer.listen(80);
 httpsServer.listen(443);
 
+console.log('yes');
 
 
