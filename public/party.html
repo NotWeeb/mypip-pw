@@ -6,7 +6,7 @@
 
   <meta name="theme-color" content="#7548ab" />
 
-  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="icon" type="image/png" href="pip_icon.png" />
 
   <meta charset="utf-8" />
   <meta name="mobile-web-app-capable" content="no" />
@@ -23,9 +23,9 @@
   <meta name="twitter:title"        content="My Public IP" />
   <meta property="og:title"         content="My Public IP" />
 
-  <meta itemprop="image"            content="https://mypip.pw/icon.png" />
-  <meta name="twitter:image"        content="https://mypip.pw/icon.png" />
-  <meta property="og:image"         content="https://mypip.pw/icon.png" />
+  <meta itemprop="image"            content="https://mypip.pw/pip_logo.png" />
+  <meta name="twitter:image"        content="https://mypip.pw/pip_logo.png" />
+  <meta property="og:image"         content="https://mypip.pw/pip_logo.png" />
 
   <meta name="twitter:description"  content="Get your public IP address in the coolest way!" />
   <meta property="og:description"   content="Get your public IP address in the coolest way!" />
@@ -33,12 +33,12 @@
   
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="P2dP.js"></script>
+  <script src="P2dP.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenLite.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
   
   <link href="https://fonts.googleapis.com/css?family=K2D|Montserrat|Bai+Jamjuree" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
+  <link href="styles.min.css" rel="stylesheet">
   
 </head>
 <body>
@@ -55,19 +55,21 @@
   </div>
   
   <p class="important-info">
-    <code>v1.07</code>
+    <code>v1.09</code>
     <br>
     Your public Internet Protocol (IP) address is <b>NOT</b> recorded or saved
     <br>
     Copyright © - 2018 (<a target="_blank" href="https://github.com/NotWeeb">@NotWeeb</a>)
     <br>
-    <code><a href="?the_music_has_been_disabled_as_requested_sir">Disable Music</a></code> | <code><a target="_blank" href="https://github.com/NotWeeb/mypip-pw">Sauce</a></code>
+    <code class="musicDisabler" onclick="disableMusic(this)"><a>Disable Music</a></code> | <code><a target="_blank" href="https://github.com/NotWeeb/mypip-pw">Sauce</a></code>
   </p>
   
   <audio id="audio"><source src="bensound-theelevatorbossanova.mp3" type="audio/mpeg"></audio>
 
   
   <script src="confetti.js"></script>
+  <script src="jquery.cookie.min.js"></script>
   <script src="main.js"></script>
+	
 </body>
 </html>

@@ -4,13 +4,13 @@ function getLength(x0, y0, x1, y1) {
     const x = x1 - x0;
     const y = y1 - y0;
     return Math.sqrt(x * x + y * y);
-}
+};
 
 function getDegAngle(x0, y0, x1, y1) {
     const y = y1 - y0;
     const x = x1 - x0;
     return Math.atan2(y, x) * (180 / Math.PI);
-}
+};
 
 // some constants
 const DECAY = 4;        // confetti decay in seconds
@@ -228,6 +228,6 @@ class ConfettiCannon {
         this.drawPointer();
         this.drawConfetti();
     }
-}
+};
 
 const confetti = new ConfettiCannon();
