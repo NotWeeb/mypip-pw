@@ -105,3 +105,28 @@ function disableMusic(el) {
 	}
 	setDisableText();
 };
+
+
+const makeExplode = () => {
+	confetti.addConfettiParticles(40, -45, 10000, 0, window.outerHeight-120); // bottom left
+	confetti.addConfettiParticles(40, -130, 10000, window.outerWidth, window.outerHeight-120); // bottom right
+	confetti.addConfettiParticles(40, 45, 10000, -40, -120); // top left
+	confetti.addConfettiParticles(40, 130, 10000, window.outerWidth+40, -120); // top right
+}
+
+$('.this-is-not-an-easter-egg').click(function() {
+	$('.doTheShake').addClass('shake-hard');
+	$('.doTheShake').addClass('shake-constant');
+	$('#yeetAudio').trigger('play');
+
+	makeExplode();
+
+	setInterval(makeExplode, 1700);
+
+	let is = true;
+	setInterval(() => {
+		$('#canvas').css('filter', is ? 'invert(100%)' : 'unset');
+		is = !is;
+	}, 100);
+
+});

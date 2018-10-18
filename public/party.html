@@ -39,16 +39,18 @@
   <script src="P2dP.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenLite.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
   
   <link href="https://fonts.googleapis.com/css?family=K2D|Montserrat|Bai+Jamjuree" rel="stylesheet">
   <link href="styles.min.css" rel="stylesheet">
   
 </head>
 <body>
-  <canvas id="canvas"></canvas>
-  <h1 class="noselect">My Public IP</h1><h4 onclick="window.location.href = '?nice_meme'">MyPIP.pw</h4>
+  <canvas id="canvas" class="doTheShake"></canvas>
+  <h1 class="noselect doTheShake">My Public IP</h1><h4 class="doTheShake" onclick="window.location.href = '?nice_meme'">MyPIP.pw</h4>
   <div class="info-container">
-    <div class="info-box">
+    <div class="info-box doTheShake">
       <div class="top" title="Double click here to get the stuff without the party :(">
         <h3 class="noselect">Here is your Public IP</h3>
         <button class="copyIP" copyable="true" title="Click for a party!">COPY</button>
@@ -57,10 +59,10 @@
     </div>
   </div>
   
-  <p class="important-info">
-    <code>v1.10</code>
+  <p class="important-info doTheShake">
+    <code>v1.11</code>
     <br>
-    Your public Internet Protocol (IP) address is <b>NOT</b> recorded or saved
+    Your public Internet Protocol (IP) address is <b class="this-is-not-an-easter-egg">NOT</b> recorded or saved
     <br>
     Copyright © - 2018 (<a target="_blank" href="https://github.com/NotWeeb">@NotWeeb</a>)
     <br>
@@ -68,6 +70,7 @@
   </p>
   
   <audio id="audio"><source src="bensound-theelevatorbossanova.mp3" type="audio/mpeg"></audio>
+  <audio id="yeetAudio"><source src="omen-003.wav" type="audio/mpeg"></audio>
 
   
   <script src="confetti.js"></script>
