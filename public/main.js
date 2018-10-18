@@ -47,15 +47,11 @@ $('*').click(function(e) {
 
 	if (!$('.this-is-not-an-easter-egg').is(e.target) && $('.this-is-not-an-easter-egg').has(e.target).length === 0) {
 		
-		
-		console.log(interval1, interval2)
-		
 		$('.doTheShake').removeClass('shake-hard');
 		$('.doTheShake').removeClass('shake-constant');
 		$('#yeetAudio').trigger('pause');
 		
 	} else {
-		console.log('yeet')
 		
 		$('.doTheShake').addClass('shake-hard');
 		$('.doTheShake').addClass('shake-constant');
