@@ -46,6 +46,15 @@ $('*').click(function(e) {
 
 	if (!$('.this-is-not-an-easter-egg').is(e.target) && $('.this-is-not-an-easter-egg').has(e.target).length === 0) {
 		
+		clearInterval(intervals[0]);
+		clearInterval(intervals[1]);
+		
+		$('.doTheShake').removeClass('shake-hard');
+		$('.doTheShake').removeClass('shake-constant');
+		$('#yeetAudio').trigger('pause');
+		
+	} else {
+		
 		$('.doTheShake').addClass('shake-hard');
 		$('.doTheShake').addClass('shake-constant');
 		
@@ -63,15 +72,6 @@ $('*').click(function(e) {
 			$('#canvas').css('filter', is ? 'invert(100%)' : 'unset');
 			is = !is;
 		}, 100);
-		
-	} else {
-		
-		clearInterval(intervals[0]);
-		clearInterval(intervals[1]);
-		
-		$('.doTheShake').removeClass('shake-hard');
-		$('.doTheShake').removeClass('shake-constant');
-		$('#yeetAudio').trigger('pause');
 		
 	}
 	
