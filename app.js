@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const formidable = require('formidable');
 const randomID = require("random-id");
 
+const { APIToken } = require('./config.json');
+
 // HTTPS certificate stuff
 const key = fs.readFileSync('./ssl/key.pem');
 const cert = fs.readFileSync('./ssl/cert.pem');
@@ -53,12 +55,20 @@ app.get('*', (req, res) => {
   });
 });
 
+const availbleDomain = [
+    "kens-bakery.club",
+    "mypip.pw",
+    "wp.mypip.pw",
+    "slinky.link",
+    "fuckwit.party"
+];
+
 app.post('/share', (req, res, next) => {
     const code = randomID(5);
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields, files) => {
 
-        if (fields.key !== 'adminmemeslmao123' && fields.key !== 'lizardisabiggay') return res.send(403);
+        if (fields.key !== APIToken) return res.send(403);
 
         const oldpath = files.fdata.path;
         const newpath = `./uploads/${code+files.fdata.name.toString().match(/(\.)+([a-zA-Z0-9]+)+/g, "").toString()}`;
@@ -68,7 +78,7 @@ app.post('/share', (req, res, next) => {
                 console.error(err);
                 return res.send(500);
             }
-            res.send(`https://${req.headers.host}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
+            res.send(`https://${availbleDomain[Math.floor(Math.random() * availbleDomain.length)]}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
         });
 
     });
@@ -84,5 +94,3 @@ httpServer.listen(80);
 httpsServer.listen(443);
 
 console.log('yes');
-
-
