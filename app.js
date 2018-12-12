@@ -2,6 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
+const formidable = require('formidable');
+const randomID = require("random-id");
 
 // HTTPS certificate stuff
 const key = fs.readFileSync('./ssl/key.pem');
@@ -21,6 +24,12 @@ app.set('trust proxy', 1);
 app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
+app.use(bodyParser.text());
+app.use(express.static('./uploads/', {
+    extensions: [
+        "png", "jpg", "gif", "mp4", "mp3","jpeg", "tiff", "bmp", "ico", "psd", "eps", "raw", "cr2", "nef", "sr2", "orf", "svg", "wav", "webm", "aac", "flac", "ogg", "wma", "m4a", "gifv", "html"
+    ]
+}));
 
 
 // gather all requests and send it directly to the memes
@@ -43,6 +52,28 @@ app.get('*', (req, res) => {
     
   });
 });
+
+app.post('/share', (req, res, next) => {
+    const code = randomID(5);
+    const form = new formidable.IncomingForm();
+    form.parse(req, (err, fields, files) => {
+
+        if (fields.key !== 'adminmemeslmao123' && fields.key !== 'lizardisabiggay') return res.send(403);
+
+        const oldpath = files.fdata.path;
+        const newpath = `./uploads/${code+files.fdata.name.toString().match(/(\.)+([a-zA-Z0-9]+)+/g, "").toString()}`;
+
+        fs.rename(oldpath, newpath, err => {
+            if (err) {
+                console.error(err);
+                return res.send(500);
+            }
+            res.send(`https://${req.headers.host}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
+        });
+
+    });
+});
+
 
 
 const httpServer = http.createServer(app);

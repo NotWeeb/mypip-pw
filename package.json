@@ -4,9 +4,12 @@
   "description": "a waste of time but also something kinda fun",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cloudflare-express": "^1.0.1",
     "express": "^4.16.4",
-    "express-force-ssl": "^0.3.2"
+    "express-force-ssl": "^0.3.2",
+    "formidable": "^1.2.1",
+    "random-id": "^1.0.3"
   },
   "devDependencies": {},
   "scripts": {
