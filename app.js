@@ -55,14 +55,6 @@ app.get('*', (req, res) => {
   });
 });
 
-const availbleDomain = [
-    "kens-bakery.club",
-    "mypip.pw",
-    "wp.mypip.pw",
-    "slinky.link",
-    "fuckwit.party"
-];
-
 app.post('/share', (req, res, next) => {
     const code = randomID(5);
     const form = new formidable.IncomingForm();
@@ -78,7 +70,10 @@ app.post('/share', (req, res, next) => {
                 console.error(err);
                 return res.send(500);
             }
-            res.send(`https://${availbleDomain[Math.floor(Math.random() * availbleDomain.length)]}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
+
+            console.log(req.hostname);
+
+            res.send(`https://${req.get('host')}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
         });
 
     });
