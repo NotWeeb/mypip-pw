@@ -1,3 +1,6 @@
 {
-  "APIToken": "yeet"
+  "APITokens": [
+    "yeet",
+    "ya-yeet"
+  ]
 }

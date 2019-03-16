@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const formidable = require('formidable');
 const randomID = require("random-id");
 
-const { APIToken } = require('./config.json');
+const { APITokens } = require('./config.json');
 
 // HTTPS certificate stuff
 const key = fs.readFileSync('./ssl/key.pem');
@@ -60,7 +60,7 @@ app.post('/share', (req, res, next) => {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields, files) => {
 
-        if (fields.key !== APIToken) return res.send(403);
+        if (!APITokens.includes(fields.key)) return res.send(403);
 
         const oldpath = files.fdata.path;
         const newpath = `./uploads/${code+files.fdata.name.toString().match(/(\.)+([a-zA-Z0-9]+)+/g, "").toString()}`;
