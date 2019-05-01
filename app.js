@@ -27,23 +27,21 @@ app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
 app.use(bodyParser.text());
-app.use(express.static('./uploads/'));
+app.use("/", express.static('./uploads/'));
 
 let existingPictures = fs.readdirSync("./uploads/") || [];
 existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+)+/g, ""));
 
-// gather all requests and send it directly to the memes
-app.get('*', (req, res) => {
+/**
+ * Send index
+ */
+app.get('/', (req, res, next) => {
     console.log('there was a request!!!!');
     const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     fs.readFile(path.resolve(__dirname, 'public', 'party.html'), 'utf8', (err, data) => {
 
         // simple error handle
-        if (err) {
-            res.status(500).send('INTERNAL SERVER ERROR');
-            console.error(err);
-            return;
-        }
+        if (err) return next(err);
 
         // replace the USER_IP string with the user's IP (i know, revolutionary right?)
         const newIndex = data.toString().replace(/%_USER_IP_%/ig, userIP.toString());
@@ -53,10 +51,24 @@ app.get('*', (req, res) => {
     });
 });
 
+/**
+ * Handle 404 / 500
+ */
+app.get("*", (err, req, res, next) => {
+
+
+
+});
+
+/**
+ * This has nothing to do with the website and is purely to allow me and a friend to upload images to the host or custom pages.
+ */
 app.post('/share', (req, res, next) => {
 
+    /**
+     * Prevents any repeat codes occurring. (Not the ideal way but one of the best ways)
+     */
     let code = randomID(5);
-    console.log(existingPictures);
     while (existingPictures.includes(code)) code = randomID(5);
 
     const form = new formidable.IncomingForm();
