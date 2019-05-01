@@ -27,7 +27,11 @@ app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
 app.use(bodyParser.text());
-app.use("/", express.static('./uploads/'));
+app.use(express.static('./uploads/', {
+    extensions: [
+        "png", "jpg", "gif", "mp4", "mp3","jpeg", "tiff", "bmp", "ico", "psd", "eps", "raw", "cr2", "nef", "sr2", "orf", "svg", "wav", "webm", "aac", "flac", "ogg", "wma", "m4a", "gifv", "html"
+    ]
+}));
 
 let existingPictures = fs.readdirSync("./uploads/") || [];
 existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+)+/g, ""));
@@ -37,7 +41,9 @@ existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+
  */
 app.get('/', (req, res, next) => {
     console.log('there was a request!!!!');
+
     const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
     fs.readFile(path.resolve(__dirname, 'public', 'party.html'), 'utf8', (err, data) => {
 
         // simple error handle
@@ -55,9 +61,7 @@ app.get('/', (req, res, next) => {
  * Handle 404 / 500
  */
 app.get("*", (err, req, res, next) => {
-
-
-
+    res.status(404).send("rip");
 });
 
 /**
