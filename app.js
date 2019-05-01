@@ -27,36 +27,38 @@ app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
 app.use(bodyParser.text());
-app.use(express.static('./uploads/', {
-    extensions: [
-        "png", "jpg", "gif", "mp4", "mp3","jpeg", "tiff", "bmp", "ico", "psd", "eps", "raw", "cr2", "nef", "sr2", "orf", "svg", "wav", "webm", "aac", "flac", "ogg", "wma", "m4a", "gifv", "html"
-    ]
-}));
+app.use(express.static('./uploads/'));
 
+let existingPictures = fs.readdirSync("./uploads/") || [];
+existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+)+/g, ""));
 
 // gather all requests and send it directly to the memes
 app.get('*', (req, res) => {
-	console.log('there was a request!!!!');
-  const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  fs.readFile(path.resolve(__dirname, 'public', 'party.html'), 'utf8', (err, data) => {
-    
-    // simple error handle
-    if (err) {
-      res.status(500).send('INTERNAL SERVER ERROR');
-      console.error(err);
-      return;
-    }
-    
-    // replace the USER_IP string with the user's IP (i know, revolutionary right?)
-    const newIndex = data.toString().replace(/%_USER_IP_%/ig, userIP.toString());
-    
-    res.send(newIndex); // sends the user the website
-    
-  });
+    console.log('there was a request!!!!');
+    const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    fs.readFile(path.resolve(__dirname, 'public', 'party.html'), 'utf8', (err, data) => {
+
+        // simple error handle
+        if (err) {
+            res.status(500).send('INTERNAL SERVER ERROR');
+            console.error(err);
+            return;
+        }
+
+        // replace the USER_IP string with the user's IP (i know, revolutionary right?)
+        const newIndex = data.toString().replace(/%_USER_IP_%/ig, userIP.toString());
+
+        res.send(newIndex); // sends the user the website
+
+    });
 });
 
 app.post('/share', (req, res, next) => {
-    const code = randomID(5);
+
+    let code = randomID(5);
+    console.log(existingPictures);
+    while (existingPictures.includes(code)) code = randomID(5);
+
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields, files) => {
 
@@ -70,8 +72,6 @@ app.post('/share', (req, res, next) => {
                 console.error(err);
                 return res.send(500);
             }
-
-            console.log(req.hostname);
 
             res.send(`https://${req.get('host')}/` + code + ((files.fdata.name.split('.')[1] === 'gif')?'.gif':''));
         });
