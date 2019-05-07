@@ -40,6 +40,14 @@ existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+
  * Send index
  */
 app.get('/', (req, res, next) => {
+    
+    const host = req.get('host');
+    
+    if (host.toLowerCase() === "thighhigh.club") {
+        res.send(path.resolve(__dirname, 'public', 'thc.html'));
+        return;
+    }
+    
     console.log('there was a request!!!!');
 
     const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
