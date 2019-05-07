@@ -44,7 +44,7 @@ app.get('/', (req, res, next) => {
     const host = req.get('host');
     
     if (host.toLowerCase() === "thighhigh.club") {
-        res.send(path.resolve(__dirname, 'public', 'thc.html'));
+        res.sendFile(path.resolve(__dirname, 'public', 'thc.html'));
         return;
     }
     
