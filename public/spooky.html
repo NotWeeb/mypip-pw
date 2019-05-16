@@ -340,9 +340,19 @@
             "wav": "audio/wav"
         };
 
+        let audios = {};
+
         class Audio {
             
             constructor(sound, vol = 1, main = false) {
+
+            	if (audios[sound]) {
+		            audios[sound].load();
+		            audios[sound].pause();
+		            audios[sound].currentTime = 0;
+		            audios[sound].play();
+		            return audios[sound];
+	            }
 
                 this.sound = document.createElement("audio");
                 this.sound.src = sound;
@@ -354,6 +364,8 @@
                 document.body.appendChild(this.sound);
                 this.sound.load();
                 this.sound.play();
+
+	            audios[sound] = this.sound;
                 return this.sound;
             }
         }
