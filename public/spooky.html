@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spooky ❤</title>
+    
+    <link rel="stylesheet" href="title.css"/>
+    <link rel="stylesheet" href="stars.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P"/>
+    <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+	<meta name="robots" content="index, follow" />
+  
+    <meta charset="utf-8" />
+    <meta name="mobile-web-app-capable" content="no" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="theme-color" content="#df6868" />
+
+    <link rel="icon" type="image/png" href="https://thighhigh.club/U6LEe.png" />
+
+    <meta name="twitter:url"          content="https://spookylore.space/" />
+    <meta property="og:url"           content="https://spookylore.space/" />
+    <meta property="og:see_also"      content="https://spookylore.space/" />
+
+    <meta property="og:site_name"     content="spookylore.space" />
+
+    <meta itemprop="name"             content="Spooky ❤" />
+    <meta name="twitter:title"        content="Spooky ❤" />
+    <meta property="og:title"         content="Spooky ❤" />
+
+    <meta itemprop="image"            content="https://cdn.discordapp.com/avatars/193469296557424640/86e24a017bda78080b8ab37d3b9a8906.png?size=2048" />
+    <meta name="twitter:image"        content="https://cdn.discordapp.com/avatars/193469296557424640/86e24a017bda78080b8ab37d3b9a8906.png?size=2048" />
+    <meta property="og:image"         content="https://cdn.discordapp.com/avatars/193469296557424640/86e24a017bda78080b8ab37d3b9a8906.png?size=2048" />
+
+    <meta name="twitter:description"  content="Hi thanks for checking in, this was a mini project by NotWeeb7777 just to appreciate how epic Spooky ❤ is!" />
+    <meta property="og:description"   content="Hi thanks for checking in, this was a mini project by NotWeeb7777 just to appreciate how epic Spooky ❤ is!" />
+    <meta name="description"          content="Hi thanks for checking in, this was a mini project by NotWeeb7777 just to appreciate how epic Spooky ❤ is!" />
+    
+    
+    <style>
+        
+        html{
+            background:radial-gradient(#121212, black);
+            height:100vh;
+            width:100vw;
+            overflow:hidden;
+        }
+        
+        body{
+            margin:0;
+            padding:0;
+            cursor:url('default-cursor.png'), auto;
+        }
+        
+        .glitch{
+            opacity:1;
+            font-family:'Press Start 2P', cursive;
+        }
+        
+        .spooky__cont{
+            height:200px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:100%;
+            transform:translateX(-80px);
+        }
+        
+        .alignHeart{
+            background-image:url(https://thighhigh.club/qeGE8.png);
+            background-size:contain;
+            background-repeat:no-repeat;
+            height:200px;
+            width:200px;
+            position:absolute;
+            right:-180px;
+            top:-30px;
+        }
+        .alignHeart.glitch__color{
+            height:200px;
+            width:200px;
+            position:absolute;
+            right:-180px;
+            top:-30px;
+            left:unset;
+        }
+        .alignHeart.glitch__color--green{
+            background-image:url(https://thighhigh.club/NjJej.png);
+        }
+        .alignHeart.glitch__color--blue{
+            background-image:url(https://thighhigh.club/squ6E.png);
+        }
+        
+        .hideOnInterval{
+            opacity:0;
+        }
+        
+        .spooky_sub_title{
+            color:#525252;
+            justify-content:center;
+            display:flex;
+            height:40px;
+            align-items:center;
+            font-family:'Press Start 2P', cursive;
+        }
+        
+        .noCursorOrPointer{
+            user-select:none;
+            cursor:inherit;
+        }
+        
+        .centerContent{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            margin:0 auto;
+            width:1000px;
+            height:100vh;
+        }
+        
+        nav{
+            margin-top:40px;
+            display:flex;
+            justify-content:space-evenly;
+        }
+        
+        nav button{
+            font-family:'Press Start 2P', cursive;
+            background:unset;
+            border:unset;
+            cursor:inherit;
+            height:60px;
+            color:white;
+            line-height:60px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            position:relative;
+            width:100%;
+            padding:0 40px;
+            font-size:26px;
+        }
+        nav button span{
+            color:#919191;
+            transition:0.2s ease;
+            text-shadow:6px 6px 0 rgba(255,255,255,0),
+                -6px -6px 0 rgba(255,255,255,0),
+                0 0 0 rgba(255,255,255,0), 
+                0 0 0 rgba(255,255,255,0);
+        }
+        
+        nav button.active span,
+        nav button:hover span{
+            color:white;
+            text-shadow:6px 6px 0 rgba(255,255,255,0.1),
+                -6px -6px 0 rgba(255,255,255,0.1),
+                -10px -10px 40px rgba(255,255,255,0.3), 
+                10px 10px 40px rgba(255,255,255,0.3);
+        }
+        nav button:focus{
+            outline:unset;
+        }
+        
+        body .page{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            padding:20px 0;
+            position:relative;
+            transition:0.4s cubic-bezier(.25, .5, .25, 1.25);
+        }
+        body .page content{
+            position:absolute;
+            width:calc(100% - 100px);
+            color:white;
+            font-family:'Press Start 2P', cursive;
+            padding:20px;
+            background:rgba(0,0,0,0.4);
+            box-shadow:4px 0 #919191, -4px 0 #919191, 0 4px #919191, 0 -4px #919191, 0 0 10px rgba(255,255,255,0.1);
+            animation:pulsingGlow 4s cubic-bezier(.25, .5, .25, 1.25) 0s infinite;
+            transform:translateY(0px);
+            opacity:1;
+            pointer-events:all;
+            transition:0.4s cubic-bezier(.25, .5, .25, 1.25);
+            line-height:30px;
+        }
+        body .page content.inactive{
+            transform:translateY(100px);
+            opacity:0;
+            pointer-events:none;
+        }
+        
+        @keyframes pulsingGlow {
+            
+            0%{
+                box-shadow:4px 0 #919191, -4px 0 #919191, 0 4px #919191, 0 -4px #919191, 0 0 10px rgba(255,255,255,0.1);
+            }
+            
+            50%{
+                box-shadow:4px 0 #ffffff, -4px 0 #ffffff, 0 4px #ffffff, 0 -4px #ffffff, 0 0 30px rgba(255,255,255,0.2);
+            }
+            
+            100%{
+                box-shadow:4px 0 #919191, -4px 0 #919191, 0 4px #919191, 0 -4px #919191, 0 0 10px rgba(255,255,255,0.1);
+            }
+            
+        }
+        
+        #stopmusicvarhgouisrdhgourdshgouarhg{
+            position:fixed;
+            left:0;top:0;bottom:0;right:0;
+            margin:auto;
+            width:100vw;
+            height:100vh;
+            overflow:hidden;
+        }
+        #starcont{
+            position:fixed;
+            z-index:-1;
+            opacity:0.2;
+            left:0;top:0;bottom:0;right:0;
+            margin:auto;
+            width:100vw;
+            height:100vh;
+            overflow:hidden;
+        }
+        #stop-or-play-music{
+            right:10px;
+            top:10px;
+            font-family:'Press Start 2P', cursive;
+            color:white;
+            opacity:0.2;
+            transition:0.1s ease;
+            padding:10px;
+            user-select:none;
+            position:fixed;
+        }
+        #stop-or-play-music:hover{
+            opacity:0.4;
+        }
+        
+        .contentPadding{
+            padding:60px 0;
+            width:100%;
+        }
+        .contentPadding::-webkit-scrollbar{
+            display:none;
+        }
+        
+        a{
+            color:#df6868;
+        }
+    </style>
+</head>
+<body>      
+    
+    <div id="stopmusicvarhgouisrdhgourdshgouarhg">
+        <div id="stop-or-play-music">STOP MUSIC</div>
+    </div>
+    
+    <div id="starcont">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </div>
+    <div class="centerContent">
+        <div class="contentPadding">
+
+            <div class="spooky__cont noCursorOrPointer">
+                <div class="glitch" data-text="Spooky">
+                    <span class="glitch__color glitch__color--red hideOnInterval ezCashMoney">Spooky<span class="glitch__color glitch__color--red alignHeart"></span></span>
+                    <span class="glitch__color glitch__color--blue hideOnInterval ezCashMoney">Spooky<span class="glitch__color glitch__color--blue alignHeart"></span></span>
+                    <span class="glitch__color glitch__color--green hideOnInterval ezCashMoney">Spooky<span class="glitch__color glitch__color--green alignHeart"></span></span>
+                    <span class="glitch__main" style="color:#df6868">Spooky<span class="glitch__main alignHeart"></span></span>
+                </div>
+            </div>
+            <div class="spooky_sub_title noCursorOrPointer">
+                <h3>Exploring the darkest, deepest lore of Spooky.</h3>
+            </div>
+
+            <nav>
+                <button data-pagebutt="home" onclick="enablePage('home')" class="shake-little active"><span>Home</span></button>
+                <button data-pagebutt="lore" onclick="enablePage('lore')" class="shake-little"><span>Lore</span></button>
+                <button data-pagebutt="spooky" onclick="enablePage('spooky')" class="shake-little"><span>Spooky</span></button>
+                <button data-pagebutt="thc" onclick="enablePage('thc')" class="shake-little"><span>THC</span></button>
+            </nav>
+
+            <div class="page">
+                <content data-pagename="home">
+                    Hi thanks for checking in, this was a mini project by NotWeeb7777 just to appreciate how epic Spooky is!
+                    <br>
+                    <br>
+                    Hope you enjoy!
+                </content>
+                <content class="inactive" data-pagename="lore">
+                    Coming soon?
+                    <br>
+                    <br>
+                    In the meantime enjoy some Lorem Ipsum!
+                    <br>
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius urna quis nunc maximus egestas. Nulla a enim porttitor, porta nibh a, maximus felis. Vivamus vitae posuere massa. Donec lobortis mauris in porttitor laoreet. Morbi urna purus, sagittis a felis placerat, tristique ornare urna. Mauris finibus porttitor massa, vel gravida ipsum viverra pretium. Nulla facilisi. In imperdiet mauris orci, eu commodo est dignissim eu.
+
+    Nullam vel est in sem vehicula sollicitudin vel sed quam. Mauris ultricies egestas gravida. Nullam tempus purus rutrum mauris gravida luctus. Donec vestibulum, velit tempus consectetur sagittis, augue elit ultrices lorem, in pharetra tellus purus sed nisi. Morbi tincidunt urna at porta hendrerit. Nullam et lacinia risus. Maecenas faucibus lectus lorem, sed suscipit ante aliquam quis. Integer finibus tellus eros, et finibus enim sagittis ac. Aenean non suscipit neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer quis sollicitudin lorem. Integer sed dictum urna. Aliquam sollicitudin vestibulum odio vel gravida. Pellentesque tempor purus eu tincidunt bibendum. Praesent sapien purus, venenatis eget sapien eget, volutpat ultricies ante. In ultricies libero eu erat tempus finibus.
+
+    Sed at ex ultrices purus laoreet dapibus. Duis in tortor sapien. Nunc eros est, semper ac varius a, porta quis nulla. Duis nec fermentum eros. Mauris nec tincidunt dolor. Nulla neque mauris, elementum ut tellus ut, posuere tempus elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac convallis justo.
+
+    Integer semper ut nisl vel porttitor. Fusce et diam nunc. In vel tincidunt felis. Nullam tincidunt lacus sem, eu tempus massa eleifend ut. Vivamus nisl tellus, lacinia et pellentesque a, vehicula eu libero. In nisl ipsum, ullamcorper in ultrices vitae, commodo a justo. Nam id laoreet sem. Praesent scelerisque tempor egestas. Nullam cursus cursus nisi, viverra hendrerit eros posuere ut. Quisque massa mauris, ultricies id purus in, convallis imperdiet enim. Nunc nec ultricies diam. Vivamus convallis dolor nec neque hendrerit, vel vehicula ipsum lacinia.
+
+    Cras efficitur eros odio, et auctor metus tempor quis. Aenean eu sagittis quam. Vivamus pharetra fermentum ex, in pretium lectus posuere feugiat. Aliquam ut sollicitudin est, et vestibulum mauris. Nunc efficitur, justo vel laoreet ullamcorper, sem nibh eleifend purus, at elementum orci lorem sit amet ex. Integer egestas convallis enim, at rutrum erat tincidunt nec. Sed sem quam, mollis ac quam id, tristique laoreet nibh.
+                </content>
+                <content class="inactive" data-pagename="spooky">
+                    <a href="https://wizardlywonders.xyz/">this</a>
+                </content>
+                <content class="inactive" data-pagename="thc">
+                    Hey so I made this pretty epic Discord server where Spooky and I hangout sometimes.<br><br>Check it out: <a target="_blank" href="https://thighhigh.club">Thigh High Club</a>
+                </content>
+            </div>
+
+        </div>
+    </div>
+    
+    
+    <script>
+        
+        
+        const pButton = $("#stop-or-play-music");
+        
+        let music = {}, manuallyPaused, musicIsPaused;
+        let currentPageName = "home";
+        
+        const audiotypes = {
+            "mp3": "audio/mpeg",
+            "mp4": "audio/mp4",
+            "ogg": "audio/ogg",
+            "wav": "audio/wav"
+        };
+
+        class Audio {
+            
+            constructor(sound, vol = 1, main = false) {
+
+                this.sound = document.createElement("audio");
+                this.sound.src = sound;
+                this.sound.setAttribute("preload", "auto");
+                this.sound.setAttribute("controls", "none");
+                this.sound.style.display = "none";
+                this.sound.volume = vol;
+                this.sound.loop = main;
+                document.body.appendChild(this.sound);
+                this.sound.load();
+                this.sound.play();
+                return this.sound;
+            }
+        }
+        
+        const enablePage = pageName => {
+            if ($(".page content:not(.inactive)").attr("data-pagename") === pageName) {
+                const selectedButton = $(`nav button[data-pagebutt="${pageName}"]`);
+                selectedButton.addClass("shake-crazy");
+                selectedButton.addClass("shake-constant");
+                setTimeout(() => {
+                    selectedButton.removeClass("shake-crazy");
+                    selectedButton.removeClass("shake-constant");
+                }, 100)
+                return new Audio(`menu-beep0.wav`);
+            }
+            manuallyPaused = true;
+            for (const val in music) {
+                if (music[val]) {
+                    music[val].pause();
+                }
+            }
+            currentPageName = pageName;
+            if (!musicIsPaused) music[pageName] = new Audio(`${pageName}.mp3`, 0.4, true);
+            $(".page content").addClass("inactive");
+            $("nav button").removeClass("active");
+            const newPage = $(`.page content[data-pagename="${pageName}"]`);
+            const selectedButton = $(`nav button[data-pagebutt="${pageName}"]`);
+            selectedButton.addClass("active");
+            newPage.removeClass("inactive");
+            $('.page').css("height", `${newPage.outerHeight()}px`);
+            if (newPage.outerHeight() > $(window).outerHeight()) {
+                $('.contentPadding').css("overflow-y", "auto");
+            } else {
+                $('.contentPadding').css("overflow-y", "unset");
+            }
+            new Audio(`menu-beep${Math.floor(Math.random() * 2) + 1}.wav`);
+        }
+        
+        // set first page height
+        const currentPage = $(".page content:not(.inactive)");
+        $('.page').css("height", `${currentPage.outerHeight()}px`);
+        
+        
+        
+        
+        
+        // title random glitch effect
+        const doTitleGlitch = () => {
+          
+            $(".ezCashMoney").removeClass("hideOnInterval");
+            setTimeout(() => {
+                $(".ezCashMoney").addClass("hideOnInterval");
+            }, Math.floor(Math.random() * 300) + 100)
+            
+            setTimeout(doTitleGlitch, Math.floor(Math.random() * 4000) + 2000);
+        };
+        
+        doTitleGlitch();
+        
+        $(document).click(() => {
+            if (manuallyPaused) return;
+            if (!music.home) {
+                music.home = new Audio("home.mp3", 0.4, true);
+                if (music.home.paused) {
+                    music.home.play();
+                }
+            } else {
+                if (music.home.paused) {
+                    music.home.play();
+                }
+            }
+        })
+        
+        try { 
+            music.home = new Audio("home.mp3", 0.4, true);
+        } catch(err) {
+            console.log("failed to play cos u didnt click!!!!");
+        }
+        pButton.click(() => {
+            manuallyPaused = true;
+            if (!music[currentPageName]) {
+                music[currentPageName] = new Audio(`${currentPageName}.mp3`, 0.4, true);
+                music[currentPageName].play();
+                pButton.text("STOP MUSIC");
+                musicIsPaused = false;
+                return;
+            }
+            if (music[currentPageName].paused) {
+                music[currentPageName].play();
+                pButton.text("STOP MUSIC");
+                musicIsPaused = false;
+            } else {
+                music[currentPageName].pause();
+                pButton.text("PLAY MUSIC");
+                musicIsPaused = true;
+            }
+            pButton.addClass("shake-hard");
+            pButton.addClass("shake-constant");
+            setTimeout(() => {
+                pButton.removeClass("shake-hard");
+                pButton.removeClass("shake-constant");
+            }, 100)
+        })
+    </script>
+    
+</body>
+</html>

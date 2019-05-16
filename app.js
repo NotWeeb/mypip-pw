@@ -48,6 +48,11 @@ app.get('/', (req, res, next) => {
         return;
     }
     
+    if (host.toLowerCase() === "spookylore.space") {
+        res.sendFile(path.resolve(__dirname, 'public', 'spooky.html'));
+        return;
+    }
+    
     console.log('there was a request!!!!');
 
     const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -69,7 +74,7 @@ app.get('/', (req, res, next) => {
  * Handle 404 / 500
  */
 app.get("*", (err, req, res, next) => {
-    res.status(404).send("rip");
+    res.send("rip");
 });
 
 /**
