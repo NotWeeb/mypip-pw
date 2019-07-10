@@ -53,6 +53,11 @@ app.get('/', (req, res, next) => {
         return;
     }
     
+    if (host.toLowerCase() === "marco-is-a-bit.ch") {
+        res.sendFile(path.resolve(__dirname, 'public', 'marco.html'));
+        return;
+    }
+    
     console.log('there was a request!!!!');
 
     const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
