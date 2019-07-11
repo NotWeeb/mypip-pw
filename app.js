@@ -75,6 +75,15 @@ app.get('/', (req, res, next) => {
     });
 });
 
+
+/**
+ * Good for applications xd
+ */
+app.get("/api/me", (req, res) => {
+    const userIP = req.cf_ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    res.status(200).send(userIP.toString());
+});
+
 /**
  * Handle 404 / 500
  */
