@@ -27,11 +27,7 @@ app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
 app.use(bodyParser.text());
-app.use(express.static('./uploads/', {
-    extensions: [
-        "png", "jpg", "gif", "mp4", "mp3","jpeg", "tiff", "bmp", "ico", "psd", "eps", "raw", "cr2", "nef", "sr2", "orf", "svg", "wav", "webm", "aac", "flac", "ogg", "wma", "m4a", "gifv", "html"
-    ]
-}));
+app.use(express.static('./uploads/'));
 
 let existingPictures = fs.readdirSync("./uploads/") || [];
 existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+)+/g, ""));
