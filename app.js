@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
 app.use(cloudflare.restore());
 app.use(forceSSL);
 app.use(bodyParser.text());
-app.use(express.static('./uploads/'));
+app.use(express.static('./uploads/', {dotfiles: "ignore"}));
 
 let existingPictures = fs.readdirSync("./uploads/") || [];
 existingPictures = existingPictures.map(file => file.replace(/(\.)+([a-zA-Z0-9]+)+/g, ""));
